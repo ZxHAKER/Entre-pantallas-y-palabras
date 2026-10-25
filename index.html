@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entre pantallas y palabras · Kit educativo</title>
+<style>
+:root{--paper:#fbf6ee;--ink:#2b2a4c;--mute:#6d6a85;--coral:#ef6f5e;--teal:#2a9d8f;--sun:#f6c453;--card:#fffdf8;--line:#e8dfd0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.75 Georgia,"Iowan Old Style","Times New Roman",serif;
+ background-image:radial-gradient(rgba(43,42,76,.06) 1px,transparent 1px);background-size:22px 22px}
+a{color:var(--coral)}
+.top{max-width:1000px;margin:0 auto;padding:1.1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;font:600 .85rem system-ui,sans-serif}
+.top b{letter-spacing:.14em;text-transform:uppercase}.top nav a{color:var(--ink);text-decoration:none;margin-left:1.2rem;border-bottom:2px solid transparent}.top nav a:hover{border-color:var(--coral)}
+.hero{max-width:1000px;margin:0 auto;padding:3rem 1.25rem 2.5rem;display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;align-items:center}
+.kicker{font:700 .78rem system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+h1{font-size:clamp(2.4rem,7vw,4.3rem);line-height:1.02;margin:.6rem 0 1rem;letter-spacing:-.02em}
+.scr{display:inline-block;background:var(--ink);color:var(--paper);padding:0 .35em;border-radius:.2em;transform:rotate(-1.5deg)}
+.pal{position:relative;display:inline-block;font-style:italic;color:var(--coral)}
+.pal svg{position:absolute;left:0;bottom:-.18em;width:100%;height:.35em}
+.lead{color:var(--mute);font-size:1.15rem;max-width:520px;margin:0}
+.mock{position:relative;justify-self:center;width:min(100%,360px)}
+.mock .tv{background:var(--ink);border-radius:18px;padding:12px 12px 26px;box-shadow:0 18px 0 -6px rgba(43,42,76,.15)}
+.mock .tv div{background:linear-gradient(135deg,#fff5dc,#ffd9cf);border-radius:8px;aspect-ratio:16/10;padding:18px;display:flex;flex-direction:column;justify-content:center;gap:9px}
+.mock .tv i{display:block;height:9px;border-radius:9px;background:rgba(43,42,76,.18)}.mock .tv i:nth-child(1){width:70%;background:var(--coral)}.mock .tv i:nth-child(2){width:92%}.mock .tv i:nth-child(3){width:58%}.mock .tv i:nth-child(4){width:80%}
+.mock .pencil{position:absolute;right:-14px;bottom:-24px;width:150px;height:18px;background:linear-gradient(90deg,var(--sun) 0 78%,#f1d7a8 78% 90%,#444 90%);border-radius:3px 12px 12px 3px;transform:rotate(-24deg);box-shadow:0 4px 0 rgba(43,42,76,.12)}
+main{max-width:860px;margin:0 auto;padding:0 1.25rem 3rem}
+.post{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2rem clamp(1.1rem,4vw,2.4rem);margin:2.2rem 0;box-shadow:0 10px 0 -6px rgba(43,42,76,.07)}
+.post h2{font-size:1.8rem;margin:0 0 .3rem;display:flex;align-items:center;gap:.7rem}
+.post h2 em{font:700 .8rem system-ui,sans-serif;font-style:normal;background:var(--teal);color:#fff;border-radius:99px;padding:.2rem .7rem;letter-spacing:.08em}
+.post p.d{margin:.2rem 0 1.2rem;color:var(--mute);font-size:1rem}
+.video{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.btn{display:inline-block;margin-top:.9rem;font:600 .85rem system-ui,sans-serif;background:var(--ink);color:var(--paper);padding:.55rem 1.1rem;border-radius:99px;text-decoration:none}.btn:hover{background:var(--coral)}
+.btn.o{background:transparent;color:var(--ink);border:2px solid var(--ink);margin-left:.4rem}.btn.o:hover{background:var(--ink);color:var(--paper)}
+.pdf{width:100%;height:640px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.polas{columns:2 260px;column-gap:1.4rem;padding:.6rem}
+.polas figure{break-inside:avoid;margin:0 0 1.6rem;background:#fff;padding:.7rem .7rem .5rem;border-radius:4px;box-shadow:0 8px 22px -10px rgba(43,42,76,.45);transform:rotate(var(--r));transition:transform .2s}
+.polas figure:hover{transform:rotate(0) scale(1.03)}
+.polas img{width:100%;display:block;cursor:zoom-in}.polas figcaption{font:italic .92rem/1.4 Georgia,serif;color:var(--mute);padding:.5rem .2rem .2rem;text-align:center}
+#lb{position:fixed;inset:0;background:rgba(30,29,55,.92);display:none;align-items:center;justify-content:center;z-index:20;padding:1rem}#lb.on{display:flex}#lb img{max-width:100%;max-height:100%;border-radius:6px}
+footer{text-align:center;color:var(--mute);font:.85rem system-ui,sans-serif;padding:1.5rem 1rem 3rem}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.mock{order:-1;width:min(70%,280px)}.pdf{height:480px}.top nav a{margin-left:.7rem}}
+@media(prefers-color-scheme:dark){:root{--paper:#17162b;--ink:#f1ecdf;--mute:#a6a3c0;--card:#1f1e38;--line:#34325a}.scr{background:var(--paper)!important;color:var(--ink);border:2px solid var(--ink)}.mock .tv{background:#0e0d1d}.polas figure{background:#2a2948}}
+.vfall{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#111 center/cover no-repeat url(https://i.ytimg.com/vi/pSyd8cje_q4/hqdefault.jpg);text-decoration:none}
+.vfall:before{content:"";position:absolute;inset:0;background:rgba(20,18,40,.45)}
+.vfall span{position:relative;display:flex;align-items:center;gap:.7rem;background:var(--coral);color:#fff;font:700 1rem system-ui,sans-serif;padding:.8rem 1.4rem;border-radius:99px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.vfall span:before{content:"";border-left:14px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent}
+</style></head><body>
+<div class="top"><b>Kit educativo</b><nav><a href="#video">Video</a><a href="#lectura">Lectura</a><a href="#galeria">Galería</a></nav></div>
+<header class="hero"><div>
+<div class="kicker">Kit educativo</div>
+<h1>Entre <span class="scr">pantallas</span><br>y <span class="pal">palabras<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 C40 1 70 11 100 5 S170 3 198 7" fill="none" stroke="#f6c453" stroke-width="5" stroke-linecap="round"/></svg></span></h1>
+<p class="lead">Un video, una lectura y las evidencias de la actividad en el aula, reunidos en un solo lugar.</p></div>
+<div class="mock" aria-hidden="true"><div class="tv"><div><i></i><i></i><i></i><i></i></div></div><span class="pencil"></span></div></header>
+<main>
+<article class="post" id="video"><h2>Video <em>VER</em></h2><p class="d">«El peso de la manzana», con sonido.</p>
+<div class="video" id="vbox"></div>
+<p class="d" id="vnote" hidden style="margin-top:.8rem">YouTube no deja reproducir videos dentro de archivos abiertos directo desde la carpeta. Para verlo aquí dentro, abre el kit con <b>Abrir_kit.bat</b> (Windows) o <b>Abrir_kit.command</b> (Mac), o súbelo a un sitio web.</p>
+<a class="btn" href="https://youtu.be/pSyd8cje_q4" target="_blank" rel="noopener">Abrir en YouTube</a></article>
+<article class="post" id="lectura"><h2>Lectura <em>PDF</em></h2><p class="d">Blancanieves: lectura sobre autenticidad, aprobación externa y las decisiones de los personajes.</p>
+<iframe class="pdf" src="media/blancanieves.pdf" title="Lectura Blancanieves"></iframe>
+<a class="btn" href="media/blancanieves.pdf" target="_blank">Abrir PDF</a><a class="btn o" href="media/blancanieves.pdf" download>Descargar</a></article>
+<article class="post" id="galeria"><h2>Galería <em>FOTOS</em></h2><p class="d">Evidencias de la actividad. Toca una foto para ampliarla.</p>
+<div class="polas"><figure style="--r:-1.6deg"><img src="media/foto1.jpg" alt="Estudiantes sentados en sus pupitres con cuadernos y celulares"><figcaption>Estudiantes trabajando en el aula</figcaption></figure><figure style="--r:1.2deg"><img src="media/foto2.jpg" alt="Pila de hojas con dibujos sobre un escritorio"><figcaption>Dibujos y materiales de la actividad sobre el escritorio</figcaption></figure><figure style="--r:-.8deg"><img src="media/foto3.jpg" alt="Televisor en el aula mostrando el video El peso de la manzana en YouTube"><figcaption>Proyección del video «El peso de la manzana» en el salón</figcaption></figure><figure style="--r:1.6deg"><img src="media/foto4.jpg" alt="Televisor mostrando un dibujo a lápiz de un rostro en el video"><figcaption>El video en pantalla durante la sesión</figcaption></figure><figure style="--r:-1.2deg"><img src="media/foto5.jpg" alt="Estudiante dibujando en una hoja sobre su pupitre"><figcaption>Una estudiante dibujando durante la actividad</figcaption></figure></div></article>
+</main>
+<footer>Entre pantallas y palabras · Kit educativo</footer>
+<div id="lb"><img alt=""></div>
+<script>const lb=document.getElementById('lb'),li=lb.querySelector('img');document.querySelectorAll('.polas img').forEach(i=>i.onclick=()=>{li.src=i.src;lb.classList.add('on')});lb.onclick=()=>lb.classList.remove('on');</script>
+<script>
+(function(){var b=document.getElementById('vbox'),id='pSyd8cje_q4';
+if(location.protocol==='file:'){b.innerHTML='<a class="vfall" href="https://youtu.be/'+id+'" target="_blank" rel="noopener" aria-label="Ver el video en YouTube"><span>Ver el video en YouTube</span></a>';document.getElementById('vnote').hidden=false}
+else{b.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?rel=0" title="El peso de la manzana" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'}})();
+</script>
+</body></html>
